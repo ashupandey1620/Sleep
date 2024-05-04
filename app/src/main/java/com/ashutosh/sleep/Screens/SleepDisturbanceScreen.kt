@@ -66,7 +66,7 @@ fun SleepDisturbanceScreen(navController: NavController) {
                         .height(60.dp))
 
                     Text(
-                        text = "Tap to add/remove the reason for speed disturbances",
+                        text = "Tap to add/remove the reason for sleep disturbances",
                         color = Color.White,
                         fontSize = 22.sp,
                         fontWeight = FontWeight.Bold,
