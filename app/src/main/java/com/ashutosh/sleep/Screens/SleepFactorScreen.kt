@@ -141,7 +141,7 @@ fun SleepFactorScreen(navController: NavController) {
 
 
                     SupportAccountItemSD(
-                        icon = R.drawable.dream ,
+                        icon = R.drawable.coffee ,
                         mainText = "Caffeine" ,
                         onClick = {
 
@@ -150,7 +150,7 @@ fun SleepFactorScreen(navController: NavController) {
                     )
 
                     SupportAccountItemSD(
-                        icon = R.drawable.kids ,
+                        icon = R.drawable.cigar ,
                         mainText = "Smoking" ,
                         onClick = {
 
@@ -160,7 +160,7 @@ fun SleepFactorScreen(navController: NavController) {
 
 
                     SupportAccountItemSD(
-                        icon = R.drawable.dream ,
+                        icon = R.drawable.pain ,
                         mainText = "Pain" ,
                         onClick = {
 
@@ -169,7 +169,7 @@ fun SleepFactorScreen(navController: NavController) {
                     )
 
                     SupportAccountItemSD(
-                        icon = R.drawable.kids ,
+                        icon = R.drawable.workout ,
                         mainText = "WorkOut" ,
                         onClick = {
 
