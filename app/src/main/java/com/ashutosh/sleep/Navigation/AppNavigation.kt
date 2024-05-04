@@ -7,6 +7,7 @@ import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
+import com.ashutosh.sleep.Screens.Central
 import com.ashutosh.sleep.Screens.GoalScreen
 import com.ashutosh.sleep.Screens.Help
 import com.ashutosh.sleep.Screens.HomeScreen
@@ -25,34 +26,48 @@ fun AppNavigation(mainViewModel: MainViewModel) {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.HomeScreen.name
+        startDestination = Routes.Central.name
     ) {
         composable(route = Routes.HomeScreen.name) {
             HomeScreen(
-//                navController
+                navController
             )
         }
         composable(route = Routes.SleepFactor.name) {
-            SleepFactorScreen()
+            SleepFactorScreen(
+                navController
+            )
         }
         composable(route = Routes.SleepDisturbance.name) {
-            SleepDisturbanceScreen()
+            SleepDisturbanceScreen(
+                navController
+            )
         }
         composable(route = Routes.Tips.name) {
             Tips()
         }
         composable(route = Routes.Goals.name) {
-            GoalScreen()
+            GoalScreen(
+                navController
+            )
         }
         composable(route = Routes.ListOfMusic.name) {
-            ListOfMusic()
+            ListOfMusic(
+                navController
+            )
         }
         composable(route = Routes.SleepStories.name) {
-            SleepStories()
+            SleepStories(
+                navController
+            )
         }
         composable(route = Routes.Help.name) {
             Help()
         }
+        composable(route = Routes.Central.name) {
+            Central(navController)
+        }
+
     }
 }
 
@@ -69,5 +84,6 @@ enum class Routes {
     Goals,
     ListOfMusic,
     SleepStories,
-    Help
+    Help,
+    Central
 }

@@ -16,6 +16,7 @@ import androidx.compose.ui.platform.LocalConfiguration
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
 import com.ashutosh.sleep.Components.Toolbar
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.ui.theme.SleepTheme
@@ -23,7 +24,7 @@ import com.ashutosh.sleep.ui.theme.SleepTheme
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
-//    navController: NavController
+    navController: NavController
 ) {
 
     val painter: Painter = painterResource(id = R.drawable.back)
@@ -31,7 +32,8 @@ fun HomeScreen(
     Scaffold(modifier = Modifier.fillMaxSize() ,
         topBar = {
                  Toolbar(
-//                     navController
+                     navController,
+                     "Sleep Tool"
                  )
         } ,
         content = {
@@ -59,7 +61,7 @@ fun HomeScreen(
 @Composable
 fun HomeScreenPreview() {
     SleepTheme {
-        HomeScreen()
+//        HomeScreen()
     }
 }
 

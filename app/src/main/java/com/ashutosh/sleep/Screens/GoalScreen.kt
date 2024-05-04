@@ -11,19 +11,21 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.ashutosh.sleep.Components.Toolbar
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.ui.theme.SleepTheme
 
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
-fun GoalScreen() {
+fun GoalScreen(navController:NavController) {
     val painter: Painter = painterResource(id = R.drawable.back)
 
     Scaffold(modifier = Modifier.fillMaxSize() ,
         topBar = {
             Toolbar(
-//                     navController
+                     navController,
+                "Goals"
             )
         } ,
         content = {
@@ -51,7 +53,7 @@ fun GoalScreen() {
 @Composable
 fun GoalScreenPreview() {
     SleepTheme {
-        GoalScreen()
+//        GoalScreen()
     }
 }
 

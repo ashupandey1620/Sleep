@@ -42,7 +42,8 @@ import com.ashutosh.sleep.ui.theme.SleepTheme
 
 @Composable
 fun Toolbar(
-//    navController: NavController
+    navController: NavController,
+    str:String
 ) {
         val context = LocalContext.current
 
@@ -87,7 +88,7 @@ fun Toolbar(
                     textAlign = TextAlign.Center ,
                     fontSize = 20.sp ,
                     lineHeight = 22.sp ,
-                    text = "Sleep Tool" ,
+                    text = str ,
                     color = White ,
                     fontWeight = FontWeight.Medium
                 )
@@ -115,7 +116,7 @@ fun Toolbar(
 @Composable
 fun AddTaskScreenPreview() {
     SleepTheme {
-        HomeScreen()
+//        HomeScreen()
     }
 }
 
