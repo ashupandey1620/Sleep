@@ -2,6 +2,7 @@ package com.ashutosh.sleep.Navigation
 
 import androidx.compose.runtime.Composable
 import androidx.lifecycle.Lifecycle
+import androidx.navigation.NavController
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
@@ -24,13 +25,12 @@ fun AppNavigation(mainViewModel: MainViewModel) {
 
     NavHost(
         navController = navController,
-        startDestination = Routes.SplashScreen.name
+        startDestination = Routes.HomeScreen.name
     ) {
         composable(route = Routes.HomeScreen.name) {
-            HomeScreen()
-        }
-        composable(route = Routes.SplashScreen.name) {
-            SplashScreen()
+            HomeScreen(
+//                navController
+            )
         }
         composable(route = Routes.SleepFactor.name) {
             SleepFactorScreen()
@@ -62,7 +62,6 @@ val NavHostController.isValidBackStack
 
 
 enum class Routes {
-    SplashScreen,
     HomeScreen,
     SleepFactor,
     SleepDisturbance,

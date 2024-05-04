@@ -11,6 +11,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import com.ashutosh.sleep.Components.CustomSnackBar
 import com.ashutosh.sleep.Navigation.AppNavigation
 import com.ashutosh.sleep.ViewModel.MainViewModel
@@ -23,6 +24,9 @@ class MainActivity : ComponentActivity() {
 
     private val mainViewModel by viewModels<MainViewModel>()
     override fun onCreate(savedInstanceState: Bundle?) {
+        //initializing the splash Screen using API
+        installSplashScreen()
+
         super.onCreate(savedInstanceState)
         setContent {
             SleepTheme {
