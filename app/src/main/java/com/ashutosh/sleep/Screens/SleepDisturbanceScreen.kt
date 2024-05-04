@@ -9,6 +9,10 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonColors
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -43,6 +47,19 @@ fun SleepDisturbanceScreen(navController: NavController) {
                 "Sleep Disturbances"
             )
         } ,
+        bottomBar = {
+                  Button(shape = RoundedCornerShape(5.dp) , modifier = Modifier.padding(10.dp)
+                      .fillMaxWidth()
+                      .padding(5.dp), onClick = { /*TODO*/ },
+                      colors = ButtonDefaults.buttonColors(Color(0xFF0277bd))) {
+                      Text(
+                          text = "DONE",
+                          color = Color.White,
+                          fontSize = 20.sp,
+                          fontWeight = FontWeight.Medium,
+                      )
+                  }  
+        },
         content = {
 
             Box(
@@ -62,7 +79,8 @@ fun SleepDisturbanceScreen(navController: NavController) {
                     .fillMaxSize()
                     .padding(horizontal = 20.dp)) {
 
-                    Spacer(modifier = Modifier.fillMaxWidth()
+                    Spacer(modifier = Modifier
+                        .fillMaxWidth()
                         .height(60.dp))
 
                     Text(
@@ -72,7 +90,8 @@ fun SleepDisturbanceScreen(navController: NavController) {
                         fontWeight = FontWeight.Bold,
                     )
 
-                    Spacer(modifier = Modifier.fillMaxWidth()
+                    Spacer(modifier = Modifier
+                        .fillMaxWidth()
                         .height(10.dp))
 
 

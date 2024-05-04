@@ -50,7 +50,7 @@ fun SupportAccountItemSD(
 
             Row(modifier = Modifier
                 .fillMaxWidth()
-                .height(55.dp)
+                .height(50.dp)
                 .background(Color.Black.copy(alpha = 0.6f))
                 ,verticalAlignment = Alignment.CenterVertically) {
                 

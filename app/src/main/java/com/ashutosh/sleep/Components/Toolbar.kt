@@ -71,7 +71,7 @@ fun Toolbar(
 
 
                 IconButton(onClick = {
-
+                    navController.popBackStack()
                 }) {
                     Icon(
                         tint = White ,
