@@ -1,6 +1,9 @@
 plugins {
     alias(libs.plugins.androidApplication)
     alias(libs.plugins.jetbrainsKotlinAndroid)
+    kotlin("kapt")
+    alias(libs.plugins.devtoolsKsp)
+    alias(libs.plugins.daggerHiltAndroid)
 }
 
 android {
@@ -18,6 +21,10 @@ android {
         vectorDrawables {
             useSupportLibrary = true
         }
+    }
+
+    kotlinOptions {
+        jvmTarget = "1.8"
     }
 
     buildTypes {
@@ -47,6 +54,15 @@ android {
             excludes += "/META-INF/{AL2.0,LGPL2.1}"
         }
     }
+
+    ksp {
+        arg(
+            "room.schemaLocation",
+            "$projectDir/schemas"
+        )
+    }
+
+
 }
 
 dependencies {
@@ -66,4 +82,40 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    //hilt
+    implementation("com.google.dagger:hilt-android:2.49")
+    kapt("com.google.dagger:hilt-android-compiler:2.49")
+
+    //navigation
+    implementation("androidx.navigation:navigation-compose:2.7.6")
+
+    //lifecycle
+    implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
+
+    //material icons extended
+    implementation("androidx.compose.material:material-icons-extended:1.5.4")
+
+    //gson
+    implementation("com.google.code.gson:gson:2.10.1")
+
+    //Retrofit and LifeCycle Livedata Support for the ViewModels
+    implementation ("com.squareup.retrofit2:retrofit:2.9.0")
+    implementation ("com.squareup.retrofit2:converter-gson:2.9.0")
+    implementation ("com.google.code.gson:gson:2.9.0")
+    implementation ("androidx.lifecycle:lifecycle-viewmodel:2.3.1")
+    implementation ("androidx.lifecycle:lifecycle-livedata:2.3.1")
+
+    //room
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+    implementation("androidx.room:room-ktx:2.6.1")
+    ksp("androidx.room:room-compiler:2.6.1")
+
+    //work manager
+    implementation("androidx.work:work-runtime-ktx:2.9.0")
+
+    //data store
+    implementation("androidx.datastore:datastore-preferences:1.0.0")
+
 }
