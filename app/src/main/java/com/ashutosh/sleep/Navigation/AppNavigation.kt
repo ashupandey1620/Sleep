@@ -44,7 +44,7 @@ fun AppNavigation(mainViewModel: MainViewModel) {
             )
         }
         composable(route = Routes.Tips.name) {
-            Tips()
+            Tips(navController)
         }
         composable(route = Routes.Goals.name) {
             GoalScreen(
