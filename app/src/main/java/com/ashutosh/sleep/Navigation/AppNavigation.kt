@@ -62,7 +62,7 @@ fun AppNavigation(mainViewModel: MainViewModel) {
             )
         }
         composable(route = Routes.Help.name) {
-            Help()
+            Help(navController)
         }
         composable(route = Routes.Central.name) {
             Central(navController)

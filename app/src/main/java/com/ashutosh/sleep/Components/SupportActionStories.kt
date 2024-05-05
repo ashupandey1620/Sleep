@@ -94,9 +94,9 @@ fun SupportActionStories(
 
 
                 Icon(
-                    painter = painterResource(id = R.drawable.like) ,
+                    painter = painterResource(id = R.drawable.tick) ,
                     contentDescription = "" ,
-                    tint = if (!color.value) Color.White else Color.Red ,
+                    tint = Color.White  ,
                     modifier = Modifier.clickable {
                         color.value = !color.value
                     }
@@ -125,9 +125,9 @@ fun SupportActionStories(
 
 
                 Icon(
-                    painter = painterResource(id = R.drawable.like) ,
+                    painter = painterResource(id = R.drawable.play) ,
                     contentDescription = "" ,
-                    tint = if (!color.value) Color.White else Color.Red ,
+                    tint = Color.White,
                     modifier = Modifier.clickable {
                         color.value = !color.value
                     }
