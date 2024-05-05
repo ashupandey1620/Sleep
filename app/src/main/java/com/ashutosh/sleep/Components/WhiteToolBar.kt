@@ -39,7 +39,7 @@ fun WhiteToolBar(
     Row(
         modifier = Modifier
             .fillMaxWidth()
-            .height(60.dp)
+            .height(50.dp)
             .background(Color.White)
             .padding(horizontal = 10.dp)
             .padding(top = 10.dp)
