@@ -1,6 +1,7 @@
 package com.ashutosh.sleep.Components
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -44,12 +45,14 @@ fun SupportActionStories(
     Row(modifier = Modifier
         .fillMaxWidth()
         .height(180.dp)
-        .padding(4.dp)) {
+        .padding(4.dp)
+        .clip(RoundedCornerShape(10.dp))
+        .background(Color.White.copy(alpha = 0.6f))
+      ) {
 
 
         Column(
             modifier = Modifier
-                .padding(6.dp)
                 .fillMaxWidth(0.4f)
                 .wrapContentHeight()
                 .clip(RoundedCornerShape(10.dp))
@@ -67,7 +70,7 @@ fun SupportActionStories(
 
         Column(
             modifier = Modifier
-                .padding(10.dp)
+                .padding(12.dp)
                 .fillMaxWidth()
                 .wrapContentHeight()
 
@@ -77,7 +80,7 @@ fun SupportActionStories(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(20.dp) , verticalAlignment = Alignment.CenterVertically,
+                    .height(25.dp) , verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
@@ -110,10 +113,13 @@ fun SupportActionStories(
                 fontWeight = FontWeight.Medium ,
             )
 
+            Spacer(modifier = Modifier.padding(3.dp))
+
+
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(20.dp) , verticalAlignment = Alignment.CenterVertically,
+                    .height(25.dp) , verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween
             ) {
 
@@ -138,21 +144,21 @@ fun SupportActionStories(
                 )
             }
 
-            Spacer(modifier = Modifier.padding(6.dp))
+            Spacer(modifier = Modifier.padding(3.dp))
 
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(20.dp) , verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.End
+                    .height(25.dp) , verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.Start
             ) {
 
 
                 Text(
                     text = "Play" ,
                     color = Color.White ,
-                    fontSize = 15.sp ,
-                    lineHeight = 17.sp ,
+                    fontSize = 13.sp ,
+                    lineHeight = 15.sp ,
                     fontWeight = FontWeight.Medium ,
                 )
 
@@ -161,8 +167,8 @@ fun SupportActionStories(
                 Text(
                     text = time ,
                     color = Color.White ,
-                    fontSize = 15.sp ,
-                    lineHeight = 17.sp ,
+                    fontSize = 13.sp ,
+                    lineHeight = 15.sp ,
                     fontWeight = FontWeight.Medium ,
                 )
 
