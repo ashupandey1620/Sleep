@@ -19,7 +19,9 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
+import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
@@ -82,25 +84,25 @@ fun ListOfMusic(
         SupportActionMusic(
             R.drawable.girl,
             "De-stress",
-            "NightTime",
+            "May 2020",
             "69 mins"),
 
         SupportActionMusic(
             R.drawable.boy,
             "Fall Asleep",
-            "NightTime",
+            "May 2020",
             "69 mins"),
 
         SupportActionMusic(
             R.drawable.girl,
             "Take a break",
-            "NightTime",
+            "May 2020",
             "69 mins"),
 
         SupportActionMusic(
             R.drawable.boy,
             "clear your mind",
-            "NightTime",
+            "May 2020",
             "69 mins")
 
     )
@@ -227,157 +229,165 @@ fun ListOfMusic(
                     }
 
 
-
-                    Text(
-                        modifier = Modifier
-                            .wrapContentWidth()
-                            .padding(top = 10.dp)
-                            .padding(horizontal = 15.dp),
-                        text = "Recently Played" ,
-                        color = Color.White ,
-                        fontSize = 18.sp ,
-                        lineHeight = 20.sp,
-                        fontWeight = FontWeight.Bold ,
-                    )
+                    Column(modifier = Modifier
+                        .fillMaxWidth()
+                        .wrapContentHeight()
+                        .verticalScroll(rememberScrollState())) {
 
 
-                    LazyVerticalGrid(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(295.dp),
-                        columns = GridCells.Fixed(2) ,
-                        userScrollEnabled = true ,
-
-                        contentPadding = PaddingValues(
-                            start = 8.dp ,
-                            top = 10.dp ,
-                            end = 8.dp ,
-                            bottom = 10.dp
-                        ) ,
-                        content = {
-
-
-                            items(ItemsList1.size) { index ->
-                                SupportActionItemMusic(
-                                    ItemsList1[index].icon ,
-                                    ItemsList1[index].mainText ,
-                                    ItemsList1[index].supportText,
-                                    ItemsList1[index].time,
-                                    {}
-                                )
-                            }
-
-
-
-                        }
-                    )
-
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .padding(horizontal = 20.dp),
-                        verticalAlignment = Alignment.CenterVertically ,
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    )
-                    {
                         Text(
-                            text = "+ ${ItemsList1.size-4} more" ,
-                            color = Color.LightGray ,
-                            fontSize = 17.sp ,
-                            lineHeight = 18.sp ,
-                            fontWeight = FontWeight.Normal ,
-                        )
-
-                        Icon(
-                            painter = painterResource(id = R.drawable.expand_circle_down) ,
-                            contentDescription = "" ,
-                            tint = Color.White  ,
                             modifier = Modifier
-                                .size(30.dp)
-                                .clickable {
-
-                                }
+                                .wrapContentWidth()
+                                .padding(top = 10.dp)
+                                .padding(horizontal = 15.dp) ,
+                            text = "Recently Played" ,
+                            color = Color.White ,
+                            fontSize = 18.sp ,
+                            lineHeight = 20.sp ,
+                            fontWeight = FontWeight.Bold ,
                         )
-                    }
 
 
+                        LazyVerticalGrid(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(295.dp) ,
+                            columns = GridCells.Fixed(2) ,
+                            userScrollEnabled = false ,
+
+                            contentPadding = PaddingValues(
+                                start = 8.dp ,
+                                top = 10.dp ,
+                                end = 8.dp ,
+                                bottom = 10.dp
+                            ) ,
+                            content = {
 
 
-
-                    Spacer(modifier = Modifier.fillMaxWidth()
-                        .height(20.dp))
-
-                    Text(
-                        modifier = Modifier
-                            .wrapContentWidth()
-                            .padding(top = 10.dp)
-                            .padding(horizontal = 15.dp),
-                        text = "Trending" ,
-                        color = Color.White ,
-                        fontSize = 18.sp ,
-                        lineHeight = 20.sp,
-                        fontWeight = FontWeight.Bold ,
-                    )
+                                items(ItemsList1.size) { index ->
+                                    SupportActionItemMusic(
+                                        ItemsList1[index].icon ,
+                                        ItemsList1[index].mainText ,
+                                        ItemsList1[index].supportText ,
+                                        ItemsList1[index].time ,
+                                        {}
+                                    )
+                                }
 
 
-                    LazyVerticalGrid(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .height(290.dp),
-                        columns = GridCells.Adaptive(128.dp) ,
-                        userScrollEnabled = true ,
-
-                        contentPadding = PaddingValues(
-                            start = 12.dp ,
-                            top = 16.dp ,
-                            end = 12.dp ,
-                            bottom = 16.dp
-                        ) ,
-                        content = {
-
-
-                            items(ItemsList2.size) { index ->
-                                SupportActionItemMusic(
-                                    ItemsList2[index].icon ,
-                                    ItemsList2[index].mainText ,
-                                    ItemsList2[index].supportText,
-                                    ItemsList2[index].time,
-                                    {}
-                                )
                             }
-
-
-                        }
-                    )
-
-                    Row(
-                        modifier = Modifier
-                            .fillMaxWidth()
-                            .wrapContentHeight()
-                            .padding(horizontal = 20.dp),
-                        verticalAlignment = Alignment.CenterVertically ,
-                        horizontalArrangement = Arrangement.SpaceBetween
-                    )
-                    {
-                        Text(
-                            text = "+ ${ItemsList2.size-4} more" ,
-                            color = Color.LightGray ,
-                            fontSize = 17.sp ,
-                            lineHeight = 18.sp ,
-                            fontWeight = FontWeight.Normal ,
                         )
 
-                        Icon(
-                            painter = painterResource(id = R.drawable.expand_circle_down) ,
-                            contentDescription = "" ,
-                            tint = Color.White  ,
+                        Row(
                             modifier = Modifier
-                                .size(30.dp)
-                                .clickable {
-
-                                }
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .padding(horizontal = 20.dp) ,
+                            verticalAlignment = Alignment.CenterVertically ,
+                            horizontalArrangement = Arrangement.SpaceBetween
                         )
+                        {
+                            Text(
+                                text = "+ ${ItemsList1.size - 4} more" ,
+                                color = Color.LightGray ,
+                                fontSize = 17.sp ,
+                                lineHeight = 18.sp ,
+                                fontWeight = FontWeight.Normal ,
+                            )
+
+                            Icon(
+                                painter = painterResource(id = R.drawable.expand_circle_down) ,
+                                contentDescription = "" ,
+                                tint = Color.White ,
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .clickable {
+
+                                    }
+                            )
+                        }
+
+
+
+
+
+                        Spacer(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(20.dp)
+                        )
+
+                        Text(
+                            modifier = Modifier
+                                .wrapContentWidth()
+                                .padding(top = 10.dp)
+                                .padding(horizontal = 15.dp) ,
+                            text = "Trending" ,
+                            color = Color.White ,
+                            fontSize = 18.sp ,
+                            lineHeight = 20.sp ,
+                            fontWeight = FontWeight.Bold ,
+                        )
+
+
+                        LazyVerticalGrid(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .height(290.dp) ,
+                            columns = GridCells.Adaptive(128.dp) ,
+                            userScrollEnabled = false ,
+
+                            contentPadding = PaddingValues(
+                                start = 12.dp ,
+                                top = 16.dp ,
+                                end = 12.dp ,
+                                bottom = 16.dp
+                            ) ,
+                            content = {
+
+
+                                items(ItemsList2.size) { index ->
+                                    SupportActionItemMusic(
+                                        ItemsList2[index].icon ,
+                                        ItemsList2[index].mainText ,
+                                        ItemsList2[index].supportText ,
+                                        ItemsList2[index].time ,
+                                        {}
+                                    )
+                                }
+
+
+                            }
+                        )
+
+                        Row(
+                            modifier = Modifier
+                                .fillMaxWidth()
+                                .wrapContentHeight()
+                                .padding(horizontal = 20.dp) ,
+                            verticalAlignment = Alignment.CenterVertically ,
+                            horizontalArrangement = Arrangement.SpaceBetween
+                        )
+                        {
+                            Text(
+                                text = "+ ${ItemsList2.size - 4} more" ,
+                                color = Color.LightGray ,
+                                fontSize = 17.sp ,
+                                lineHeight = 18.sp ,
+                                fontWeight = FontWeight.Normal ,
+                            )
+
+                            Icon(
+                                painter = painterResource(id = R.drawable.expand_circle_down) ,
+                                contentDescription = "" ,
+                                tint = Color.White ,
+                                modifier = Modifier
+                                    .size(30.dp)
+                                    .clickable {
+
+                                    }
+                            )
+                        }
                     }
 
                 }
