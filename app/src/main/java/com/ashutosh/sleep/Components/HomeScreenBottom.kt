@@ -3,6 +3,7 @@ package com.ashutosh.sleep.Components
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
@@ -15,9 +16,12 @@ import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessAlarms
 import androidx.compose.material3.Icon
+import androidx.compose.material3.Switch
+import androidx.compose.material3.SwitchDefaults
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -94,7 +98,8 @@ fun HomeScreenBottom() {
             modifier = Modifier.padding(8.dp)
         )
 
-        Spacer(modifier = Modifier.fillMaxWidth()
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
             .height(15.dp))
 
 
@@ -118,8 +123,8 @@ fun HomeScreenBottom() {
         LazyVerticalGrid(
             modifier = Modifier
                 .fillMaxWidth()
-                .height(310.dp) ,
-            columns = GridCells.Adaptive(128.dp) ,
+                .height(280.dp) ,
+            columns = GridCells.Fixed(2) ,
             userScrollEnabled = false ,
 
             contentPadding = PaddingValues(
@@ -143,6 +148,75 @@ fun HomeScreenBottom() {
             }
         )
 
+
+
+        Row(
+            modifier = Modifier
+                .fillMaxWidth()
+                .wrapContentHeight()
+                .padding(horizontal = 10.dp)
+                .padding(bottom = 10.dp)
+                .clip(RoundedCornerShape(10.dp))
+                .background(Color.DarkGray.copy(alpha = 0.6f))
+            ,
+            horizontalArrangement = Arrangement.Center ,
+            verticalAlignment = Alignment.Top
+        ) {
+
+            Box(modifier = Modifier
+                .fillMaxWidth(0.1f)
+                .height(60.dp) ,
+                contentAlignment = Alignment.TopCenter){
+
+                Icon(
+                    painter = painterResource(id = R.drawable.play) ,
+                    contentDescription = "" ,
+                    tint = Color.White ,
+                    modifier = Modifier
+                        .size(65.dp)
+                        .clickable {
+
+                        }
+                )
+            }
+
+            Column(modifier = Modifier.fillMaxWidth(0.8f)) {
+                Text(
+                    text = "Weather" ,
+                    color = Color.White ,
+                    fontSize = 16.sp ,
+                    lineHeight = 16.sp ,
+                    fontWeight = FontWeight.Normal ,
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
+                        .padding(top = 10.dp)
+                )
+                Text(
+                    text = "There will be addition of 500 ml to 1 litre of water to your daily intake based on the weather temperature." ,
+                    color = Color.White ,
+                    fontSize = 16.sp ,
+                    lineHeight = 18.sp ,
+                    fontWeight = FontWeight.Normal ,
+                    modifier = Modifier.padding(horizontal = 8.dp)
+                        .padding(bottom = 10.dp)
+
+                )
+
+            }
+
+            Box(modifier = Modifier
+                .fillMaxWidth()
+                .height(70.dp),
+                contentAlignment = Alignment.Center
+                ){
+
+               Switch(checked = true , onCheckedChange = {},
+                   colors = SwitchDefaults.colors(checkedThumbColor = Color.Green,
+                       checkedTrackColor = Color.White))
+            }
+
+
+        }
 
     }
 }

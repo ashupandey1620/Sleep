@@ -42,6 +42,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ashutosh.sleep.Components.HomeScreenBottom
 import com.ashutosh.sleep.Components.SupportActionItemHome
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.ui.theme.SleepTheme
@@ -174,6 +175,8 @@ fun HomeScreen(
                         TaskStatus(time="6 hrs",status="Achieved")
                     }
 
+                    HomeScreenBottom()
+
                 }
             }
 
@@ -198,9 +201,10 @@ fun TaskStatus(time: String , status: String) {
 
         )
 
-        Spacer(modifier = Modifier.fillMaxWidth()
+        Spacer(modifier = Modifier
+            .fillMaxWidth()
             .padding(8.dp)
-            .height(5.dp)
+            .height(4.dp)
             .background(Color.White))
 
         Text(
