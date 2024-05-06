@@ -114,6 +114,7 @@ fun Help(navController:NavController) {
                             .fillMaxWidth()
                             .wrapContentHeight()
                             .padding(horizontal = 15.dp)
+                            .padding(vertical = 10.dp)
 
 
                     ) {

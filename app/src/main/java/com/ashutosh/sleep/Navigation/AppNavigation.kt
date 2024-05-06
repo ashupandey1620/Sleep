@@ -53,7 +53,7 @@ fun AppNavigation(mainViewModel: MainViewModel) {
         }
         composable(route = Routes.ListOfMusic.name) {
             ListOfMusic(
-                navController
+//                navController
             )
         }
         composable(route = Routes.SleepStories.name) {
