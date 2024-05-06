@@ -41,7 +41,7 @@ fun SupportActionItemHome(
             .fillMaxWidth()
             .wrapContentHeight()
             .clip(RoundedCornerShape(10.dp))
-            .background(Color.DarkGray.copy(alpha = 0.8f))
+            .background(Color.LightGray.copy(alpha = 0.8f))
 
 
     ) {

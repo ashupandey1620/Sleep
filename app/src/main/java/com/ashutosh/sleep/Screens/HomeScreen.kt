@@ -10,6 +10,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxHeight
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -25,6 +26,8 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessAlarms
+import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
@@ -44,6 +47,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.ashutosh.sleep.Components.BottomSheet
 import com.ashutosh.sleep.Components.HomeScreenBottom
 import com.ashutosh.sleep.Components.SupportActionItemHome
 import com.ashutosh.sleep.R
@@ -62,7 +66,7 @@ fun HomeScreen(
 //    navController: NavController
 ) {
 
-    var showSheet by remember { mutableStateOf(false) }
+    var showSheet by remember { mutableStateOf(true) }
 
     val painter: Painter = painterResource(id = R.drawable.back)
 
@@ -75,6 +79,46 @@ fun HomeScreen(
 //                     navController,
 //                     "Sleep Tool"
 //                 )
+        } ,
+        bottomBar = {
+
+                    Row (modifier = Modifier
+                        .fillMaxWidth()
+                        .height(60.dp)){
+
+                        Button(colors = ButtonDefaults.buttonColors(Color(0xFF43a047)), shape = RoundedCornerShape(5.dp) , modifier = Modifier
+                            .fillMaxWidth(0.5f)
+                            .fillMaxHeight()
+                            .padding(4.dp), onClick = { /*TODO*/ }) {
+                            Text(
+                                text = "SCHEDULE" ,
+                                color = Color.White ,
+                                fontSize = 20.sp ,
+                                fontWeight = FontWeight.Medium ,
+                            )
+                        }
+
+
+                        Button(colors = ButtonDefaults.buttonColors(Color(0xFF0277bd)),shape = RoundedCornerShape(5.dp),modifier = Modifier
+                            .fillMaxWidth()
+                            .fillMaxHeight()
+                            .padding(4.dp), onClick = { /*TODO*/ }) {
+                            Text(
+                                text = "START" ,
+                                color = Color.White ,
+                                fontSize = 20.sp ,
+                                fontWeight = FontWeight.Medium ,
+                            )
+                        }
+
+                    }
+
+
+                    if (showSheet) {
+                        BottomSheet() {
+                            showSheet = false
+                        }
+                    }
         } ,
         content = {
 
@@ -110,7 +154,7 @@ fun HomeScreen(
 
                     Column(
                         modifier = Modifier
-                            .size(210.dp)
+                            .size(190.dp)
                             .clip(CircleShape)
                             .background(Color.LightGray.copy(alpha = 0.6f))
                         ,
@@ -178,7 +222,7 @@ fun HomeScreen(
                         TaskStatus(time="6 hrs",status="Achieved")
                     }
 
-                    HomeScreenBottom()
+
 
                 }
             }
