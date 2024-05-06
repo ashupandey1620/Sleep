@@ -4,6 +4,7 @@ import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
@@ -11,6 +12,8 @@ import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
+import androidx.compose.foundation.lazy.grid.GridCells
+import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessAlarms
@@ -28,7 +31,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.Screens.HomeScreen
+import com.ashutosh.sleep.Screens.SupportActionHome
 import com.ashutosh.sleep.ui.theme.SleepTheme
+
+
+
+data class SupportActionMusic(
+    val icon: Int,
+    val mainText: String,
+    val supportText: String,
+    val time:String
+)
 
 @Composable
 fun HomeScreenBottom() {
@@ -36,10 +49,41 @@ fun HomeScreenBottom() {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .background(Color.LightGray.copy(alpha = 0.6f)) ,
+            .background(Color.Gray.copy(alpha = 0.6f)) ,
         verticalArrangement = Arrangement.Center ,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+
+        val ItemsList2 = listOf(
+
+            SupportActionHome(
+                R.drawable.music,
+                "Music",
+                "Calm",
+            ) ,
+
+            SupportActionHome(
+                R.drawable.goal,
+                "Goal",
+                "De-Stress") ,
+
+            SupportActionHome(
+                R.drawable.factors,
+                "Factors",
+                "Sleep Factors") ,
+
+            SupportActionHome(
+                R.drawable.jet,
+                "Jet Lag",
+                "Check Tips") ,
+
+            SupportActionHome(
+                R.drawable.sleep,
+                "Sleep Stories",
+                "MoonLight",)
+
+        )
 
         Text(
             text = "PRACTICE" ,
@@ -58,7 +102,8 @@ fun HomeScreenBottom() {
             modifier = Modifier
                 .fillMaxWidth()
                 .wrapContentHeight()
-                .padding(horizontal = 20.dp) ,
+                .padding(horizontal = 20.dp)
+                ,
             verticalAlignment = Alignment.CenterVertically ,
             horizontalArrangement = Arrangement.SpaceEvenly
         )
@@ -70,41 +115,38 @@ fun HomeScreenBottom() {
         }
 
 
-    }
-}
-
-@Composable
-fun CircularButtons(icon: Int , s: String) {
-    Column(
-        modifier = Modifier
-            .size(70.dp)
-            .clip(CircleShape)
-            .background(Color.LightGray.copy(alpha = 0.6f)) ,
-        verticalArrangement = Arrangement.Center ,
-        horizontalAlignment = Alignment.CenterHorizontally
-    ) {
-
-        Icon(
-            painter = painterResource(id = icon),
-            contentDescription = "" ,
-            tint = Color.White ,
+        LazyVerticalGrid(
             modifier = Modifier
-                .size(22.dp)
-                .clickable {
+                .fillMaxWidth()
+                .height(310.dp) ,
+            columns = GridCells.Adaptive(128.dp) ,
+            userScrollEnabled = false ,
 
+            contentPadding = PaddingValues(
+                start = 12.dp ,
+                top = 16.dp ,
+                end = 12.dp ,
+                bottom = 16.dp
+            ) ,
+            content = {
+
+
+                items(ItemsList2.size) { index ->
+                    SupportActionItemHome(
+                        ItemsList2[index].icon ,
+                        ItemsList2[index].mainText ,
+                        ItemsList2[index].supportText
+                    ) {}
                 }
+
+
+            }
         )
 
-        Text(
-            text = "PRACTICE" ,
-            color = Color.White ,
-            fontSize = 9.sp ,
-            lineHeight = 10.sp ,
-            fontWeight = FontWeight.Medium ,
-            modifier = Modifier.padding(8.dp)
-        )
+
     }
 }
+
 
 @Preview()
 @Composable

@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.dp
 import androidx.navigation.NavController
 import com.ashutosh.sleep.Components.SupportActionGoal
 import com.ashutosh.sleep.Components.SupportActionItemMusic
+import com.ashutosh.sleep.Components.SupportActionMusic
 import com.ashutosh.sleep.Components.Toolbar
 import com.ashutosh.sleep.Components.tabsMusic
 import com.ashutosh.sleep.R
@@ -58,12 +59,6 @@ import com.google.gson.Gson
 import java.net.URLEncoder
 
 
-data class SupportActionMusic(
-    val icon: Int,
-    val mainText: String,
-    val supportText: String,
-    val time:String
-)
 
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -85,7 +80,7 @@ fun ListOfMusic(
             R.drawable.girl,
             "De-stress",
             "May 2020",
-            "69 mins"),
+            "69 mins") ,
 
         SupportActionMusic(
             R.drawable.boy,
