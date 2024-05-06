@@ -3,21 +3,25 @@ package com.ashutosh.sleep.Screens
 import android.annotation.SuppressLint
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.layout.wrapContentWidth
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Tab
 import androidx.compose.material3.TabRow
@@ -157,7 +161,7 @@ fun ListOfMusic(
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .padding(vertical = 3.dp) ,
+                         ,
                     verticalArrangement = Arrangement.Top ,
                     horizontalAlignment = Alignment.Start
                 ) {
@@ -240,7 +244,7 @@ fun ListOfMusic(
                     LazyVerticalGrid(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(330.dp),
+                            .height(295.dp),
                         columns = GridCells.Fixed(2) ,
                         userScrollEnabled = true ,
 
@@ -263,8 +267,42 @@ fun ListOfMusic(
                                 )
                             }
 
+
+
                         }
                     )
+
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .wrapContentHeight()
+                            .padding(horizontal = 20.dp),
+                        verticalAlignment = Alignment.CenterVertically ,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    )
+                    {
+                        Text(
+                            text = "+ ${ItemsList1.size-4} more" ,
+                            color = Color.LightGray ,
+                            fontSize = 17.sp ,
+                            lineHeight = 18.sp ,
+                            fontWeight = FontWeight.Normal ,
+                        )
+
+                        Icon(
+                            painter = painterResource(id = R.drawable.expand_circle_down) ,
+                            contentDescription = "" ,
+                            tint = Color.White  ,
+                            modifier = Modifier
+                                .size(30.dp)
+                                .clickable {
+
+                                }
+                        )
+                    }
+
+
+
 
 
                     Spacer(modifier = Modifier.fillMaxWidth()
@@ -286,7 +324,7 @@ fun ListOfMusic(
                     LazyVerticalGrid(
                         modifier = Modifier
                             .fillMaxWidth()
-                            .height(330.dp),
+                            .height(290.dp),
                         columns = GridCells.Adaptive(128.dp) ,
                         userScrollEnabled = true ,
 
@@ -313,11 +351,34 @@ fun ListOfMusic(
                         }
                     )
 
+                    Row(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .wrapContentHeight()
+                            .padding(horizontal = 20.dp),
+                        verticalAlignment = Alignment.CenterVertically ,
+                        horizontalArrangement = Arrangement.SpaceBetween
+                    )
+                    {
+                        Text(
+                            text = "+ ${ItemsList2.size-4} more" ,
+                            color = Color.LightGray ,
+                            fontSize = 17.sp ,
+                            lineHeight = 18.sp ,
+                            fontWeight = FontWeight.Normal ,
+                        )
 
+                        Icon(
+                            painter = painterResource(id = R.drawable.expand_circle_down) ,
+                            contentDescription = "" ,
+                            tint = Color.White  ,
+                            modifier = Modifier
+                                .size(30.dp)
+                                .clickable {
 
-
-
-
+                                }
+                        )
+                    }
 
                 }
 

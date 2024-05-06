@@ -51,7 +51,7 @@ fun SupportActionItemMusic(
         .wrapContentHeight()
         .padding(4.dp)
         .clip(RoundedCornerShape(10.dp))
-        .background(Color.White.copy(alpha = 0.6f))
+        .background(Color(0xFF313131).copy(alpha = 0.9f))
     ) {
 
 
@@ -74,7 +74,7 @@ fun SupportActionItemMusic(
                 contentScale = ContentScale.FillBounds
             )
             Icon(
-                painter = painterResource(id = R.drawable.tick) ,
+                painter = painterResource(id = R.drawable.more_vert) ,
                 contentDescription = "" ,
                 tint = Color.White  ,
                 modifier = Modifier
@@ -157,7 +157,7 @@ fun SupportActionItemMusic(
                     contentDescription = "" ,
                     tint = Color.White ,
                     modifier = Modifier
-                        .size(50.dp)
+                        .size(65.dp)
                         .padding(8.dp)
                         .clickable {
 
