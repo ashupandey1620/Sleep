@@ -46,7 +46,7 @@ fun SupportActionGoal(
 
     Box(modifier = Modifier
         .fillMaxWidth()
-        .height(160.dp)
+        .height(170.dp)
         .padding(4.dp)) {
 
         Image(
@@ -69,7 +69,7 @@ fun SupportActionGoal(
             Row(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(20.dp) , verticalAlignment = Alignment.CenterVertically,
+                    .height(25.dp) , verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.End
             ) {
 
@@ -86,16 +86,16 @@ fun SupportActionGoal(
             Spacer(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(80.dp)
+                    .height(90.dp)
             )
 
 
             Text(
                 text = mainText ,
                 color = Color.White ,
-                fontSize = 15.sp ,
+                fontSize = 16.sp ,
                 lineHeight = 17.sp ,
-                fontWeight = FontWeight.Medium ,
+                fontWeight = FontWeight.Bold ,
             )
 
             Text(

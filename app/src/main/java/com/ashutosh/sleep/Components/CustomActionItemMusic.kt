@@ -51,7 +51,7 @@ fun SupportActionItemMusic(
         .wrapContentHeight()
         .padding(4.dp)
         .clip(RoundedCornerShape(10.dp))
-        .background(Color(0xFF313131).copy(alpha = 0.9f))
+        .background(Color.DarkGray.copy(alpha = 0.7f))
     ) {
 
 

@@ -112,18 +112,20 @@ fun GoalScreen(navController:NavController) {
             }
 
 
-           Column(modifier = Modifier.padding(10.dp)) {
+           Column(modifier = Modifier) {
 
                Spacer(modifier = Modifier
                    .fillMaxWidth()
-                   .height(60.dp))
+                   .height(70.dp))
 
                Text(
                    text = "Select the Goal you want to achieve",
                    color = Color.White,
-                   fontSize = 19.sp,
+                   fontSize = 18.sp,
                    lineHeight = 20.sp,
-                   fontWeight = FontWeight.Medium,
+                   fontWeight = FontWeight.Bold,
+                   modifier = Modifier.fillMaxWidth()
+                       .padding(horizontal = 15.dp)
                )
 
                LazyVerticalGrid(

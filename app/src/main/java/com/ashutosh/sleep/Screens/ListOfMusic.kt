@@ -77,7 +77,6 @@ fun ListOfMusic(
         mutableStateOf(0)
     }
 
-
     val fac = listOf("children")
     val dis = listOf("coffee")
 
@@ -97,27 +96,39 @@ fun ListOfMusic(
     val ItemsList1 = listOf(
 
         SupportActionMusic(
-            R.drawable.girl,
+            R.drawable.pic4,
             "De-stress",
             "May 2020",
             "69 mins") ,
 
         SupportActionMusic(
-            R.drawable.boy,
+            R.drawable.pic3,
             "Fall Asleep",
             "May 2020",
             "69 mins"),
 
         SupportActionMusic(
-            R.drawable.girl,
+            R.drawable.pic1,
             "Take a break",
             "May 2020",
             "69 mins"),
 
         SupportActionMusic(
-            R.drawable.boy,
+            R.drawable.pic2,
             "clear your mind",
             "May 2020",
+            "69 mins"),
+
+        SupportActionMusic(
+            R.drawable.pic3,
+            "Take a break",
+            "NightTime",
+            "69 mins"),
+
+        SupportActionMusic(
+            R.drawable.pic4,
+            "clear your mind",
+            "NightTime",
             "69 mins")
 
     )
@@ -127,25 +138,25 @@ fun ListOfMusic(
     val ItemsList2 = listOf(
 
         SupportActionMusic(
-            R.drawable.girl,
+            R.drawable.pic1,
             "De-stress",
             "NightTime",
             "69 mins"),
 
         SupportActionMusic(
-            R.drawable.boy,
+            R.drawable.pic2,
             "Fall Asleep",
             "NightTime",
             "69 mins"),
 
         SupportActionMusic(
-            R.drawable.girl,
+            R.drawable.pic3,
             "Take a break",
             "NightTime",
             "69 mins"),
 
         SupportActionMusic(
-            R.drawable.boy,
+            R.drawable.pic4,
             "clear your mind",
             "NightTime",
             "69 mins")

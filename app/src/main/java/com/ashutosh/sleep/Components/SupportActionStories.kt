@@ -47,7 +47,7 @@ fun SupportActionStories(
         .height(180.dp)
         .padding(4.dp)
         .clip(RoundedCornerShape(10.dp))
-        .background(Color.White.copy(alpha = 0.6f))
+        .background(Color.Gray.copy(alpha = 0.6f))
       ) {
 
 
@@ -98,7 +98,7 @@ fun SupportActionStories(
                     contentDescription = "" ,
                     tint = Color.White  ,
                     modifier = Modifier.clickable {
-                        color.value = !color.value
+
                     }
                 )
             }
@@ -129,7 +129,7 @@ fun SupportActionStories(
                     contentDescription = "" ,
                     tint = Color.White,
                     modifier = Modifier.clickable {
-                        color.value = !color.value
+
                     }
                 )
 
