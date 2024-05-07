@@ -21,7 +21,7 @@ fun BottomSheet(onDismiss: () -> Unit) {
         sheetState = modalBottomSheetState,
         dragHandle = { BottomSheetDefaults.DragHandle() },
         containerColor = Color.Transparent,
-//        scrimColor = Color.DarkGray.copy(alpha = 0.4f)
+        scrimColor = Color.Transparent
     ) {
         HomeScreenBottom()
     }

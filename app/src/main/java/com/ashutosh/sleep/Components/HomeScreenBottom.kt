@@ -156,9 +156,9 @@ fun HomeScreenBottom() {
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .padding(horizontal = 10.dp)
-                .padding(bottom = 10.dp)
+                .padding(bottom = 30.dp)
                 .clip(RoundedCornerShape(10.dp))
-                .background(Color.LightGray.copy(alpha = 0.6f))
+                .background(Color.Gray.copy(alpha = 0.6f))
             ,
             horizontalArrangement = Arrangement.Center ,
             verticalAlignment = Alignment.Top

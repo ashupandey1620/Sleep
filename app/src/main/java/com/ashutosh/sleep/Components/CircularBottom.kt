@@ -26,7 +26,7 @@ fun CircularButtons(icon: Int , s: String) {
         modifier = Modifier
             .size(70.dp)
             .clip(CircleShape)
-            .background(Color.DarkGray.copy(alpha = 0.8f)) ,
+            .background(Color.Gray.copy(alpha = 0.8f)) ,
         verticalArrangement = Arrangement.Center ,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {

@@ -48,12 +48,15 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ashutosh.sleep.Components.BottomSheet
+import com.ashutosh.sleep.Components.SnackbarController.delay
 import com.ashutosh.sleep.Components.Toolbar
-import com.ashutosh.sleep.NetworkModule.RequestPost
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.ViewModel.MainViewModel
 import com.ashutosh.sleep.ui.theme.SleepTheme
-import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.delay
+import java.text.SimpleDateFormat
+import java.util.Date
+import java.util.Locale
 
 
 data class SupportActionHome(
@@ -78,6 +81,18 @@ fun HomeScreen(
     LaunchedEffect(Unit) {
         mainViewModel.getResponse()
     }
+
+
+
+    var currentTime by remember { mutableStateOf(getCurrentTime()) }
+
+    LaunchedEffect(true) {
+        while (true) {
+            delay(1000) // Delay for 1 second
+            currentTime = getCurrentTime() // Update the time
+        }
+    }
+
 
     Scaffold(modifier = Modifier.fillMaxSize() ,
         topBar = {
@@ -170,7 +185,7 @@ fun HomeScreen(
 
 
                         Text(
-                            text = "20:45" ,
+                            text = currentTime ,
                             color = Color.White ,
                             fontSize = 40.sp ,
                             lineHeight = 40.sp ,
@@ -280,4 +295,8 @@ fun HomeScreenPreview() {
 }
 
 
-
+fun getCurrentTime():String{
+    val currentTime = Date()
+    val sdf = SimpleDateFormat("HH:mm" , Locale.getDefault())
+    return sdf.format(currentTime)
+}
