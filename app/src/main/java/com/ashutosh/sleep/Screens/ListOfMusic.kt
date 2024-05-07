@@ -277,7 +277,7 @@ fun ListOfMusic(
                         LazyVerticalGrid(
                             modifier = Modifier
                                 .fillMaxWidth()
-                                .height(295.dp) ,
+                                .height(280.dp) ,
                             columns = GridCells.Fixed(2) ,
                             userScrollEnabled = false ,
 

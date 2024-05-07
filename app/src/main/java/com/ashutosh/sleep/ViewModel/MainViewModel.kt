@@ -51,18 +51,6 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
 
                     Log.d("",response.toString())
 
-//                    if (response.error) {
-//                        _showToast.value = true
-//                        _toastMessage.value = response.message
-//
-//
-//                    } else {
-//                        error = false
-//                        val accessToken = result.loginResponse.responseData.token.access
-//                        val refreshToken = result.loginResponse.responseData.token.refresh
-//
-//                        tokenStore.saveTokens(accessToken , refreshToken)
-//                    }
                 }
                 Repository.PostResult.NetworkError -> {
                     loadingState = false
@@ -112,18 +100,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
 
                     Log.d("",response.toString())
 
-//                    if (response.error) {
-//                        _showToast.value = true
-//                        _toastMessage.value = response.message
-//
-//
-//                    } else {
-//                        error = false
-//                        val accessToken = result.loginResponse.responseData.token.access
-//                        val refreshToken = result.loginResponse.responseData.token.refresh
-//
-//                        tokenStore.saveTokens(accessToken , refreshToken)
-//                    }
+
                 }
                 Repository.PutResult.NetworkError -> {
                     loadingState = false
@@ -163,7 +140,6 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
 
                 Log.d("GET RESPONSE DATA",result.toString())
 
-//                _getProfile.postValue(result)
 
             }
         }

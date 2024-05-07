@@ -240,8 +240,8 @@ fun HomeScreen(
 
                             Text(
                                 text = "Off" ,
-                                color = Color.LightGray ,
-                                fontSize = 20.sp ,
+                                color = Color.White ,
+                                fontSize = 18.sp ,
                                 lineHeight = 22.sp ,
                                 fontWeight = FontWeight.SemiBold ,
                             )
