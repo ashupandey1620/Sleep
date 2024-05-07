@@ -47,6 +47,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import com.ashutosh.sleep.Components.BottomSheet
+import com.ashutosh.sleep.NetworkModule.RequestPost
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.ViewModel.MainViewModel
 import com.ashutosh.sleep.ui.theme.SleepTheme
@@ -75,6 +76,7 @@ fun HomeScreen(
 
     LaunchedEffect(Unit) {
         mainViewModel.getResponse()
+
     }
 
     Scaffold(modifier = Modifier.fillMaxSize() ,

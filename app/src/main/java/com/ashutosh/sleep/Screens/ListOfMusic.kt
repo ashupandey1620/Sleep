@@ -31,6 +31,7 @@ import androidx.compose.material3.TabRowDefaults
 import androidx.compose.material3.TabRowDefaults.tabIndicatorOffset
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -47,13 +48,16 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ashutosh.sleep.Components.SupportActionGoal
 import com.ashutosh.sleep.Components.SupportActionItemMusic
 import com.ashutosh.sleep.Components.SupportActionMusic
 import com.ashutosh.sleep.Components.Toolbar
 import com.ashutosh.sleep.Components.tabsMusic
+import com.ashutosh.sleep.NetworkModule.RequestPost
 import com.ashutosh.sleep.R
+import com.ashutosh.sleep.ViewModel.MainViewModel
 import com.ashutosh.sleep.ui.theme.SleepTheme
 import com.google.gson.Gson
 import java.net.URLEncoder
@@ -71,6 +75,22 @@ fun ListOfMusic(
 
     var selectedIndex by remember {
         mutableStateOf(0)
+    }
+
+
+    val fac = listOf("children")
+    val dis = listOf("coffee")
+
+    val tempPost = RequestPost(dis,
+        fac,
+        "De-Stress",
+        "123",
+        "6309a9379af54f142c65fbfe")
+
+    val mainViewModel: MainViewModel = hiltViewModel()
+
+    LaunchedEffect(Unit) {
+        mainViewModel.requestPost(tempPost)
     }
 
 
