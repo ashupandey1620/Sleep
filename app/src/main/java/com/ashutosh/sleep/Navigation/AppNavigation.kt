@@ -30,7 +30,7 @@ fun AppNavigation(mainViewModel: MainViewModel) {
     ) {
         composable(route = Routes.HomeScreen.name) {
             HomeScreen(
-//                navController
+                navController
             )
         }
         composable(route = Routes.SleepFactor.name) {
@@ -53,7 +53,7 @@ fun AppNavigation(mainViewModel: MainViewModel) {
         }
         composable(route = Routes.ListOfMusic.name) {
             ListOfMusic(
-//                navController
+                navController
             )
         }
         composable(route = Routes.SleepStories.name) {

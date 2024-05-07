@@ -24,9 +24,10 @@ class Repository @Inject constructor(private val api : SleepApi){
     val postResponseLiveData : LiveData<Any?>
         get() = _postResponseLiveData
 
-    suspend fun postCheck(request: RequestPost): PostResult {
+    suspend fun postCheck(uid:String, request: RequestPost): PostResult {
+        val currentTimestamp = System.currentTimeMillis()
         return try {
-            val response = api.sleepPost(request)
+            val response = api.sleepPost(uid, currentTimestamp, request)
 
             val responseBody = response.body()
             if (response.isSuccessful && responseBody != null) {
@@ -59,9 +60,10 @@ class Repository @Inject constructor(private val api : SleepApi){
     val putResponseLiveData: LiveData<Any?>
         get() = _putResponseLiveData
 
-    suspend fun putRequest(request: RequestPut): PutResult {
+    suspend fun putRequest(uid:String, request: RequestPut): PutResult {
+        val currentTimestamp = System.currentTimeMillis()
         return try {
-            val response = api.sleepPut(request)
+            val response = api.sleepPut(uid, currentTimestamp, request)
 
             val responseBody = response.body()
             if (response.isSuccessful && responseBody != null) {
@@ -81,9 +83,10 @@ class Repository @Inject constructor(private val api : SleepApi){
 
 
 
-    suspend fun getResponse(): ResponseGet? {
+    suspend fun getResponse(uid: String): ResponseGet? {
+        val currentTimestamp = System.currentTimeMillis()
         return try {
-            val response = api.sleepGet()
+            val response = api.sleepGet(uid, currentTimestamp)
 
             response.body()
         } catch (e: Exception) {

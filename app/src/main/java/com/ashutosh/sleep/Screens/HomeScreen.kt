@@ -46,7 +46,9 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
 import com.ashutosh.sleep.Components.BottomSheet
+import com.ashutosh.sleep.Components.Toolbar
 import com.ashutosh.sleep.NetworkModule.RequestPost
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.ViewModel.MainViewModel
@@ -63,7 +65,7 @@ data class SupportActionHome(
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun HomeScreen(
-//    navController: NavController,
+    navController: NavController ,
 ) {
 
 
@@ -73,18 +75,16 @@ fun HomeScreen(
 
     val mainViewModel:MainViewModel= hiltViewModel()
 
-
     LaunchedEffect(Unit) {
         mainViewModel.getResponse()
-
     }
 
     Scaffold(modifier = Modifier.fillMaxSize() ,
         topBar = {
-//                 Toolbar(
-//                     navController,
-//                     "Sleep Tool"
-//                 )
+                 Toolbar(
+                     navController,
+                     "Sleep Tool"
+                 )
         } ,
         bottomBar = {
 
@@ -275,7 +275,7 @@ fun TaskStatus(time: String , status: String) {
 @Composable
 fun HomeScreenPreview() {
     SleepTheme {
-        HomeScreen()
+//        HomeScreen()
     }
 }
 

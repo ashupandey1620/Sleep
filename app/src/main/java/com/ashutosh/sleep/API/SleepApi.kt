@@ -10,24 +10,32 @@ import retrofit2.http.Header
 import retrofit2.http.Headers
 import retrofit2.http.POST
 import retrofit2.http.PUT
+import retrofit2.http.Query
 
 interface SleepApi {
 
     @Headers("Content-Type: application/json")
-    @GET("/tools/sleep/get/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
-    suspend fun sleepGet(): Response<ResponseGet>
+    @GET("/tools/sleep/get/")
+    suspend fun sleepGet(
+        @Query("uid") uid: String ,
+        @Query("date") date: Long ,
+    ): Response<ResponseGet>
 
 
     @Headers("Content-Type: application/json")
-    @POST("/tools/sleep/activity/post/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
+    @POST("/tools/sleep/activity/post/")
     suspend fun sleepPost(
+        @Query("uid") uid: String ,
+        @Query("date") date: Long ,
         @Body refreshToken: RequestPost
-    ):Response<Any>
+    ): Response<Any>
 
 
     @Headers("Content-Type: application/json")
-    @PUT("/tools/sleep/put/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
+    @PUT("/tools/sleep/put/")
     suspend fun sleepPut(
+        @Query("uid") uid: String ,
+        @Query("date") date: Long ,
         @Body requestBody: RequestPut
     ): Response<Any>
 

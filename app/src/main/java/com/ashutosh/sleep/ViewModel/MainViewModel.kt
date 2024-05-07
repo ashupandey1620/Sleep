@@ -35,10 +35,13 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
 
     var error by mutableStateOf(false)
 
+    val uid = "6309a9379af54f142c65fbfe"
+
     fun requestPost(request: RequestPost) {
+
         viewModelScope.launch {
             _PostResult.value = Repository.PostResult.Loading
-            val result = repository.postCheck(request)
+            val result = repository.postCheck(uid, request)
             _PostResult.value = result
 
             when (val result = result) {
@@ -99,7 +102,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
     fun requestPost(request: RequestPut) {
         viewModelScope.launch {
             _PutResult.value = Repository.PutResult.Loading
-            val result = repository.putRequest(request)
+            val result = repository.putRequest(uid,request)
             _PutResult.value = result
 
             when (val result = result) {
@@ -154,7 +157,7 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
         viewModelScope.launch {
 
 
-            val result = repository.getResponse()
+            val result = repository.getResponse(uid)
 
             if (result != null) {
 

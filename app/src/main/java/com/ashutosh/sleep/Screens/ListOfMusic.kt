@@ -69,7 +69,7 @@ import java.net.URLEncoder
 @SuppressLint("UnusedMaterial3ScaffoldPaddingParameter")
 @Composable
 fun ListOfMusic(
-//    navController:NavController
+    navController:NavController
 ) {
     val painter: Painter = painterResource(id = R.drawable.back)
 
@@ -84,7 +84,7 @@ fun ListOfMusic(
     val tempPost = RequestPost(dis,
         fac,
         "De-Stress",
-        "123",
+        "6309a9379af54f142c65fbfe",
         "6309a9379af54f142c65fbfe")
 
     val mainViewModel: MainViewModel = hiltViewModel()
@@ -154,10 +154,10 @@ fun ListOfMusic(
 
     Scaffold(modifier = Modifier.fillMaxSize() ,
         topBar = {
-//            Toolbar(
-//                     navController,
-//                "Music"
-//            )
+            Toolbar(
+                     navController,
+                "Music"
+            )
         } ,
         content = {
 
@@ -417,7 +417,7 @@ fun ListOfMusic(
 @Composable
 fun ListOfMusicScreenPreview() {
     SleepTheme {
-        ListOfMusic()
+//        ListOfMusic()
     }
 }
 
