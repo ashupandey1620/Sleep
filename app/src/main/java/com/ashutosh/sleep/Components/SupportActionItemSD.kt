@@ -51,7 +51,7 @@ fun SupportAccountItemSD(
             Row(modifier = Modifier
                 .fillMaxWidth()
                 .height(50.dp)
-                .background(Color.Black.copy(alpha = 0.6f))
+                .background(Color.DarkGray.copy(alpha = 0.8f))
                 ,verticalAlignment = Alignment.CenterVertically) {
                 
                 Spacer(modifier = Modifier.padding(10.dp))

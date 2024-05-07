@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.layout.wrapContentHeight
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -19,6 +20,7 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessAlarms
+import androidx.compose.material.icons.filled.Doorbell
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Switch
 import androidx.compose.material3.SwitchDefaults
@@ -53,11 +55,12 @@ fun HomeScreenBottom() {
         modifier = Modifier
             .fillMaxWidth()
             .wrapContentHeight()
-            .clip(RoundedCornerShape(30.dp))
             .background(Color.DarkGray.copy(alpha = 0.8f)) ,
         verticalArrangement = Arrangement.Center ,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
+
+
 
 
         val ItemsList2 = listOf(
@@ -89,6 +92,15 @@ fun HomeScreenBottom() {
                 "MoonLight",)
 
         )
+
+
+
+        Column(modifier = Modifier
+            .padding(8.dp)
+            .width(80.dp)
+            .height(5.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(Color.White)){}
 
         Text(
             text = "PRACTICE" ,
@@ -156,7 +168,7 @@ fun HomeScreenBottom() {
                 .fillMaxWidth()
                 .wrapContentHeight()
                 .padding(horizontal = 10.dp)
-                .padding(bottom = 30.dp)
+                .padding(bottom = 60.dp)
                 .clip(RoundedCornerShape(10.dp))
                 .background(Color.Gray.copy(alpha = 0.6f))
             ,
@@ -170,9 +182,9 @@ fun HomeScreenBottom() {
                 contentAlignment = Alignment.TopCenter){
 
                 Icon(
-                    painter = painterResource(id = R.drawable.play) ,
+                    imageVector = Icons.Default.Doorbell ,
                     contentDescription = "" ,
-                    tint = Color.White ,
+                    tint = Color.Green ,
                     modifier = Modifier
                         .size(65.dp)
                         .clickable {
@@ -198,7 +210,8 @@ fun HomeScreenBottom() {
                     fontSize = 16.sp ,
                     lineHeight = 18.sp ,
                     fontWeight = FontWeight.Normal ,
-                    modifier = Modifier.padding(horizontal = 8.dp)
+                    modifier = Modifier
+                        .padding(horizontal = 8.dp)
                         .padding(bottom = 10.dp)
 
                 )
@@ -213,7 +226,8 @@ fun HomeScreenBottom() {
 
                Switch(checked = true , onCheckedChange = {},
                    colors = SwitchDefaults.colors(checkedThumbColor = Color.Green,
-                       checkedTrackColor = Color.White))
+                       checkedTrackColor = Color.White),
+                   modifier = Modifier.size(30.dp))
             }
 
 

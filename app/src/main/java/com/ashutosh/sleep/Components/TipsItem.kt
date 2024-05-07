@@ -68,9 +68,9 @@ fun TipsItem(
                 Text(
                     text = mainText,
                     color = Color.White,
-                    fontSize = 18.sp,
+                    fontSize = 14.sp,
                     lineHeight = 21.sp,
-                    fontWeight = FontWeight.Medium,
+                    fontWeight = FontWeight.Bold,
                 )
             }
         }
@@ -88,8 +88,8 @@ fun TipsItem(
                 Text(
                     text = supportText,
                     color = Color.White,
-                    fontSize = 13.sp,
-                    lineHeight = 14.sp,
+                    fontSize = 10.sp,
+                    lineHeight = 12.sp,
                     fontWeight = FontWeight.Medium,
                 )
             }

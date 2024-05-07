@@ -74,10 +74,13 @@ fun Tips(navController:NavController) {
                         Text(
                             text = "Here are few tips and tricks that may help prevent jet lag or reduce its effects",
                             color = Color.White,
-                            fontSize = 21.sp,
+                            fontSize = 18.sp,
                             lineHeight = 22.sp,
-                            fontWeight = FontWeight.Medium,
+                            fontWeight = FontWeight.Bold,
                         )
+
+                        Spacer(modifier = Modifier.fillMaxWidth()
+                            .height(15.dp))
 
                         TipsItem(
                             icon = R.drawable.sun,

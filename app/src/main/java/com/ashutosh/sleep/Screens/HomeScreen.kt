@@ -1,6 +1,7 @@
 package com.ashutosh.sleep.Screens
 
 import android.annotation.SuppressLint
+import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -102,44 +103,66 @@ fun HomeScreen(
                  )
         } ,
         bottomBar = {
+            Column(horizontalAlignment = Alignment.CenterHorizontally) {
 
-                    Row (modifier = Modifier
+                AnimatedVisibility(visible = !showSheet) {
+                    Icon(
+                        painter = painterResource(id = R.drawable.up_arrow) ,
+                        contentDescription = "",
+                        tint = Color.White,
+                        modifier = Modifier.size(35.dp)
+                            .clickable {
+                                showSheet = true
+                            }
+                    )
+                }
+
+                Row(
+                    modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp)){
+                        .height(60.dp)
+                ) {
 
-                        Button(colors = ButtonDefaults.buttonColors(Color(0xFF43a047)), shape = RoundedCornerShape(5.dp) , modifier = Modifier
+                    Button(colors = ButtonDefaults.buttonColors(Color(0xFF43a047)) ,
+                        shape = RoundedCornerShape(5.dp) ,
+                        modifier = Modifier
                             .fillMaxWidth(0.5f)
                             .fillMaxHeight()
-                            .padding(4.dp), onClick = { /*TODO*/ }) {
-                            Text(
-                                text = "SCHEDULE" ,
-                                color = Color.White ,
-                                fontSize = 20.sp ,
-                                fontWeight = FontWeight.Medium ,
-                            )
-                        }
+                            .padding(4.dp) ,
+                        onClick = { /*TODO*/ }) {
+                        Text(
+                            text = "SCHEDULE" ,
+                            color = Color.White ,
+                            fontSize = 20.sp ,
+                            fontWeight = FontWeight.Medium ,
+                        )
+                    }
 
 
-                        Button(colors = ButtonDefaults.buttonColors(Color(0xFF0277bd)),shape = RoundedCornerShape(5.dp),modifier = Modifier
+                    Button(colors = ButtonDefaults.buttonColors(Color(0xFF0277bd)) ,
+                        shape = RoundedCornerShape(5.dp) ,
+                        modifier = Modifier
                             .fillMaxWidth()
                             .fillMaxHeight()
-                            .padding(4.dp), onClick = { /*TODO*/ }) {
-                            Text(
-                                text = "START" ,
-                                color = Color.White ,
-                                fontSize = 20.sp ,
-                                fontWeight = FontWeight.Medium ,
-                            )
-                        }
-
+                            .padding(4.dp) ,
+                        onClick = { /*TODO*/ }) {
+                        Text(
+                            text = "START" ,
+                            color = Color.White ,
+                            fontSize = 20.sp ,
+                            fontWeight = FontWeight.Medium ,
+                        )
                     }
 
+                }
 
-                    if (showSheet) {
-                        BottomSheet() {
-                            showSheet = false
-                        }
+
+                if (showSheet) {
+                    BottomSheet() {
+                        showSheet = false
                     }
+                }
+            }
         } ,
         content = {
 

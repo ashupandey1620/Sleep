@@ -81,13 +81,13 @@ fun SleepDisturbanceScreen(navController: NavController) {
 
                     Spacer(modifier = Modifier
                         .fillMaxWidth()
-                        .height(60.dp))
+                        .height(70.dp))
 
                     Text(
                         text = "Tap to add/remove the reason for sleep disturbances",
                         color = Color.White,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.Bold,
+                        fontSize = 18.sp,
+                        fontWeight = FontWeight.SemiBold,
                     )
 
                     Spacer(modifier = Modifier

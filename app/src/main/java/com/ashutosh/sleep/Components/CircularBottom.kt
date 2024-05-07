@@ -24,7 +24,7 @@ import androidx.compose.ui.unit.sp
 fun CircularButtons(icon: Int , s: String) {
     Column(
         modifier = Modifier
-            .size(70.dp)
+            .size(60.dp)
             .clip(CircleShape)
             .background(Color.Gray.copy(alpha = 0.8f)) ,
         verticalArrangement = Arrangement.Center ,
@@ -43,7 +43,7 @@ fun CircularButtons(icon: Int , s: String) {
         )
 
         Text(
-            text = "PRACTICE" ,
+            text = s ,
             color = Color.White ,
             fontSize = 9.sp ,
             lineHeight = 10.sp ,

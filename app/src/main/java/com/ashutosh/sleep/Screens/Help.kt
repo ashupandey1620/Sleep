@@ -71,17 +71,17 @@ fun Help(navController:NavController) {
                 ) {
                     Text(
                         text = "What makes a good night's sleep?" ,
-                        color = Color.Blue ,
-                        fontSize = 16.sp ,
+                        color = Color(0xFF51a2d1) ,
+                        fontSize = 15.sp ,
                         lineHeight = 18.sp,
                         fontWeight = FontWeight.Bold ,
                     )
                     Text(
                         text = "Sleep impacts every aspect of our life. Here are some of the main points you might want to take into consideration in order to get a good night's sleep" ,
                         color = Color.LightGray ,
-                        fontSize = 15.sp ,
+                        fontSize = 14.sp ,
                         lineHeight = 17.sp,
-                        fontWeight = FontWeight.Medium ,
+                        fontWeight = FontWeight.Normal ,
                     )
 
                 }
@@ -120,8 +120,8 @@ fun Help(navController:NavController) {
                     ) {
                         Text(
                             text = "Check Why Sleep is essential to our health?" ,
-                            color = Color.Blue ,
-                            fontSize = 16.sp ,
+                            color = Color(0xFF51a2d1) ,
+                            fontSize = 15.sp ,
                             lineHeight = 18.sp ,
                             fontWeight = FontWeight.Bold ,
                         )
@@ -140,9 +140,9 @@ fun Help(navController:NavController) {
                                     "Clear your mind\n\n" +
                                     " Set up a healthy bedtime routine" ,
                             color = Color.LightGray ,
-                            fontSize = 15.sp ,
+                            fontSize = 14.sp ,
                             lineHeight = 17.sp ,
-                            fontWeight = FontWeight.Medium ,
+                            fontWeight = FontWeight.Normal,
                         )
                     }
                 }
