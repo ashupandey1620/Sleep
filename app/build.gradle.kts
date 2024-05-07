@@ -86,12 +86,22 @@ dependencies {
     //okhttp Network logging interceptor
     implementation ("com.squareup.okhttp3:logging-interceptor:4.12.0")
 
-    //hilt
-    implementation("com.google.dagger:hilt-android:2.49")
-    kapt("com.google.dagger:hilt-android-compiler:2.49")
+    implementation("com.google.dagger:hilt-android:2.48")
+    kapt("com.google.dagger:hilt-android-compiler:2.48")
 
-    //navigation
-    implementation("androidx.navigation:navigation-compose:2.7.6")
+    //LiveData
+    implementation ("androidx.compose.runtime:runtime-livedata:1.2.0-beta01")
+
+    // ViewModel
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1")
+
+    // ViewModel utilities for Compose
+    implementation ("androidx.lifecycle:lifecycle-viewmodel-compose:2.6.1")
+
+
+    //Navigation
+    implementation ("androidx.navigation:navigation-compose:2.6.0")
+    implementation ("androidx.hilt:hilt-navigation-compose:1.0.0")
 
     //lifecycle
     implementation("androidx.lifecycle:lifecycle-runtime-compose:2.6.2")
@@ -101,6 +111,13 @@ dependencies {
 
     //gson
     implementation("com.google.code.gson:gson:2.10.1")
+
+    // Work Manager Library Android
+    implementation ("androidx.work:work-runtime-ktx:2.9.0")
+
+    // Hilt for work Manager
+    implementation ("androidx.hilt:hilt-work:1.1.0")
+
 
     //Retrofit and LifeCycle Livedata Support for the ViewModels
     implementation ("com.squareup.retrofit2:retrofit:2.9.0")
@@ -115,8 +132,6 @@ dependencies {
     implementation("androidx.room:room-ktx:2.6.1")
     ksp("androidx.room:room-compiler:2.6.1")
 
-    //work manager
-    implementation("androidx.work:work-runtime-ktx:2.9.0")
 
     //data store
     implementation("androidx.datastore:datastore-preferences:1.0.0")

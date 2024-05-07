@@ -14,19 +14,19 @@ import retrofit2.http.PUT
 interface SleepApi {
 
     @Headers("Content-Type: application/json")
-    @GET("/get/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
+    @GET("/tools/sleep/get/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
     suspend fun sleepGet(): Response<ResponseGet>
 
 
     @Headers("Content-Type: application/json")
-    @POST("/activity/post/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
+    @POST("/tools/sleep/activity/post/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
     suspend fun sleepPost(
         @Body refreshToken: RequestPost
     ):Response<Any>
 
 
     @Headers("Content-Type: application/json")
-    @PUT("/put/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
+    @PUT("/tools/sleep/put/?uid=6309a9379af54f142c65fbfe&date=1711860932992")
     suspend fun sleepPut(
         @Body requestBody: RequestPut
     ): Response<Any>

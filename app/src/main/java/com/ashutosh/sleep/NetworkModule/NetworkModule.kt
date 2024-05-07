@@ -17,9 +17,9 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
-    val client = OkHttpClient.Builder()
-        .hostnameVerifier { _, _ -> true }
-        .build()
+//    val client = OkHttpClient.Builder()
+//        .hostnameVerifier { _, _ -> true }
+//        .build()
 
     @Singleton
     @Provides
@@ -29,6 +29,7 @@ class NetworkModule {
 
         return OkHttpClient.Builder()
             .addInterceptor(interceptor)
+            .hostnameVerifier { _, _ -> true }
             .build()
     }
 
@@ -37,7 +38,6 @@ class NetworkModule {
     @Named("retrofit")
     fun providesRetrofit(): Retrofit {
         return Retrofit.Builder().baseUrl(Constants.BASE_URL)
-            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .client(providesOkHttpClient())
             .build()
