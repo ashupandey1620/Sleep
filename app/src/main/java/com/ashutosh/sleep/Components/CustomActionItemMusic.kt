@@ -157,8 +157,7 @@ fun SupportActionItemMusic(
                     contentDescription = "" ,
                     tint = Color.White ,
                     modifier = Modifier
-                        .size(65.dp)
-                        .padding(8.dp)
+                        .size(50.dp)
                         .clickable {
 
                         }

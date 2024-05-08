@@ -50,6 +50,7 @@ import androidx.compose.ui.unit.sp
 import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
+import com.ashutosh.sleep.Components.PlayerSlider
 import com.ashutosh.sleep.Components.SupportActionGoal
 import com.ashutosh.sleep.Components.SupportActionItemMusic
 import com.ashutosh.sleep.Components.SupportActionMusic
@@ -140,25 +141,25 @@ fun ListOfMusic(
         SupportActionMusic(
             R.drawable.pic1,
             "De-stress",
-            "NightTime",
+            "May 2020",
             "69 mins"),
 
         SupportActionMusic(
             R.drawable.pic2,
             "Fall Asleep",
-            "NightTime",
+            "May 2020",
             "69 mins"),
 
         SupportActionMusic(
             R.drawable.pic3,
             "Take a break",
-            "NightTime",
+            "May 2020",
             "69 mins"),
 
         SupportActionMusic(
             R.drawable.pic4,
             "clear your mind",
-            "NightTime",
+            "May 2020",
             "69 mins")
 
     )
@@ -169,6 +170,9 @@ fun ListOfMusic(
                      navController,
                 "Music"
             )
+        } ,
+        bottomBar =  {
+           PlayerSlider()
         } ,
         content = {
 
@@ -278,7 +282,7 @@ fun ListOfMusic(
                             modifier = Modifier
                                 .fillMaxWidth()
                                 .height(280.dp) ,
-                            columns = GridCells.Fixed(2) ,
+                            columns = GridCells.Adaptive(128.dp) ,
                             userScrollEnabled = false ,
 
                             contentPadding = PaddingValues(

@@ -38,6 +38,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Brush
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.layout.ContentScale
@@ -49,8 +50,9 @@ import androidx.compose.ui.unit.sp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.ashutosh.sleep.Components.BottomSheet
-import com.ashutosh.sleep.Components.SnackbarController.delay
 import com.ashutosh.sleep.Components.Toolbar
+import com.ashutosh.sleep.Components.backRainBow
+import com.ashutosh.sleep.Components.whiteRainBow
 import com.ashutosh.sleep.R
 import com.ashutosh.sleep.ViewModel.MainViewModel
 import com.ashutosh.sleep.ui.theme.SleepTheme
@@ -110,7 +112,8 @@ fun HomeScreen(
                         painter = painterResource(id = R.drawable.up_arrow) ,
                         contentDescription = "",
                         tint = Color.White,
-                        modifier = Modifier.size(35.dp)
+                        modifier = Modifier
+                            .size(35.dp)
                             .clickable {
                                 showSheet = true
                             }
@@ -261,9 +264,9 @@ fun HomeScreen(
                          verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceEvenly
                     ) {
-                        TaskStatus(time="8 hrs",status="Recommended")
-                        TaskStatus(time="7 hrs",status="Goal")
-                        TaskStatus(time="6 hrs",status="Achieved")
+                        TaskStatus(time="8 hrs",status="Recommended", whiteRainBow())
+                        TaskStatus(time="7 hrs",status="Goal", backRainBow())
+                        TaskStatus(time="6 hrs",status="Achieved", whiteRainBow())
                     }
 
 
@@ -276,7 +279,7 @@ fun HomeScreen(
 }
 
 @Composable
-fun TaskStatus(time: String , status: String) {
+fun TaskStatus(time: String , status: String , brush: Brush) {
     Column(
         Modifier
             .width(110.dp)
@@ -295,8 +298,9 @@ fun TaskStatus(time: String , status: String) {
         Spacer(modifier = Modifier
             .fillMaxWidth()
             .padding(8.dp)
-            .height(4.dp)
-            .background(Color.White))
+            .height(5.dp)
+            .clip(RoundedCornerShape(10.dp))
+            .background(brush))
 
         Text(
             text = status ,
