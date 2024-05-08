@@ -160,7 +160,7 @@ fun HomeScreenBottom() {
 
             }
         )
-
+        Spacer(modifier = Modifier.height(12.dp))
 
 
         Row(
@@ -178,15 +178,16 @@ fun HomeScreenBottom() {
 
             Box(modifier = Modifier
                 .fillMaxWidth(0.1f)
-                .height(60.dp) ,
+                .height(50.dp) ,
                 contentAlignment = Alignment.TopCenter){
 
                 Icon(
-                    imageVector = Icons.Default.Doorbell ,
+                   painter = painterResource(id = R.drawable.icon__3_) ,
                     contentDescription = "" ,
                     tint = Color.Green ,
                     modifier = Modifier
-                        .size(65.dp)
+                        .padding(5.dp)
+                        .size(35.dp)
                         .clickable {
 
                         }
@@ -207,8 +208,8 @@ fun HomeScreenBottom() {
                 Text(
                     text = "There will be addition of 500 ml to 1 litre of water to your daily intake based on the weather temperature." ,
                     color = Color.White ,
-                    fontSize = 16.sp ,
-                    lineHeight = 18.sp ,
+                    fontSize = 14.sp ,
+                    lineHeight = 16.sp ,
                     fontWeight = FontWeight.Normal ,
                     modifier = Modifier
                         .padding(horizontal = 8.dp)
