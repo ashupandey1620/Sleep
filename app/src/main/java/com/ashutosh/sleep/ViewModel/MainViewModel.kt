@@ -9,11 +9,16 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.ashutosh.sleep.Main.MainEvent
+import com.ashutosh.sleep.Main.MainState
 import com.ashutosh.sleep.NetworkModule.RequestPost
 import com.ashutosh.sleep.NetworkModule.RequestPut
 import com.ashutosh.sleep.NetworkModule.ResponseGet
 import com.ashutosh.sleep.Repository.Repository
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.MutableStateFlow
+import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.catch
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
@@ -21,56 +26,70 @@ import javax.inject.Inject
 class MainViewModel @Inject constructor(private val repository: Repository) : ViewModel() {
 
 
-    private val _showToast = mutableStateOf(false)
-    val showToast: MutableState<Boolean> = _showToast
+    var state by mutableStateOf(MainState())
 
-    private val _toastMessage = mutableStateOf("")
-    val toastMessage: MutableState<String> = _toastMessage
+    fun onEvent(event: MainEvent) {
+        when (event) {
+            is MainEvent.Update -> {
+                viewModelScope.launch {
 
-    private val _PostResult = MutableLiveData<Repository.PostResult>()
-    val postResult: LiveData<Repository.PostResult>
-        get() = _PostResult
+                }
+            }
+
+            is MainEvent.Delete -> {
+                viewModelScope.launch {
+
+                }
+            }
+
+            is MainEvent.Insert -> {
+
+            }
+
+            is MainEvent.Append -> {
+
+
+            }
+        }
+    }
+
+    private val _postResult = MutableStateFlow<Repository.PostResult>(Repository.PostResult.Loading)
+    val postResult: StateFlow<Repository.PostResult> = _postResult
 
     var loadingState by mutableStateOf(false)
 
-    var error by mutableStateOf(false)
+
 
     val uid = "6309a9379af54f142c65fbfe"
 
     fun requestPost(request: RequestPost) {
-
         viewModelScope.launch {
-            _PostResult.value = Repository.PostResult.Loading
-            val result = repository.postCheck(uid, request)
-            _PostResult.value = result
+            repository.postCheck(uid, request)
+                .catch { e ->
+                    Log.d("okhttp","Exception $e")
+                }
+                .collect { result ->
+                    when (result) {
+                        is Repository.PostResult.Success -> {
+                            loadingState = false
+                            Log.d("", result.postResponse.toString())
+                        }
+                        Repository.PostResult.NetworkError -> {
+                            loadingState = false
 
-            when (val result = result) {
-                is Repository.PostResult.Success -> {
-                    val response = result.loginResponse
-                    loadingState = false
+                            Log.d("okhttp Network Error","Errror")
+                        }
+                        is Repository.PostResult.Error -> {
+                            loadingState = false
 
-                    Log.d("",response.toString())
-
+                            Log.d("okhttp Error","Unknown Error")
+                        }
+                        is Repository.PostResult.Loading -> {
+                            loadingState = true
+                            Log.d("okhttp Loading","Loading from ViewModel")
+                        }
+                    }
                 }
-                Repository.PostResult.NetworkError -> {
-                    loadingState = false
-                    _showToast.value = true
-                    _toastMessage.value = "Network error occurred"
-                }
-                is Repository.PostResult.Error -> {
-                    loadingState = false
-                    _showToast.value = true
-                    _toastMessage.value = "Error: ${result.errorMessage}"
-                }
-                Repository.PostResult.Loading -> {
-                    // Handle loading state
-                    loadingState = true
-                }
-                null -> {
-                    // Handle loading state
-                    loadingState = true
-                }
-            }
         }
     }
 
@@ -78,71 +97,49 @@ class MainViewModel @Inject constructor(private val repository: Repository) : Vi
 
 
 
+    private val _putResult = MutableStateFlow<Repository.PutResult>(Repository.PutResult.Loading)
+    val putResult: StateFlow<Repository.PutResult> = _putResult
 
 
 
-    private val _PutResult = MutableLiveData<Repository.PutResult>()
-    val putResult: LiveData<Repository.PutResult>
-        get() = _PutResult
-
-
-
-    fun requestPost(request: RequestPut) {
+    // Function to perform a PUT request
+    fun requestPut(request: RequestPut) {
         viewModelScope.launch {
-            _PutResult.value = Repository.PutResult.Loading
-            val result = repository.putRequest(uid,request)
-            _PutResult.value = result
+            repository.putRequest(uid, request)
+                .catch { e ->
+                    // Handle exception here
+                }
+                .collect { result ->
+                    when (result) {
+                        is Repository.PutResult.Success -> {
+                            loadingState = false
+                            Log.d("", result.response.toString())
+                        }
+                        Repository.PutResult.NetworkError -> {
+                            loadingState = false
 
-            when (val result = result) {
-                is Repository.PutResult.Success -> {
-                    val response = result.response
-                    loadingState = false
+                        }
+                        is Repository.PutResult.Error -> {
+                            loadingState = false
 
-                    Log.d("",response.toString())
-
-
+                        }
+                        Repository.PutResult.Loading -> {
+                            loadingState = true
+                        }
+                    }
                 }
-                Repository.PutResult.NetworkError -> {
-                    loadingState = false
-                    _showToast.value = true
-                    _toastMessage.value = "Network error occurred"
-                }
-                is Repository.PutResult.Error -> {
-                    loadingState = false
-                    _showToast.value = true
-                    _toastMessage.value = "Error: ${result.errorMessage}"
-                }
-                Repository.PutResult.Loading -> {
-                    // Handle loading state
-                    loadingState = true
-                }
-                null -> {
-                    // Handle loading state
-                    loadingState = true
-                }
-            }
         }
     }
 
 
+    private val _getResponse = MutableStateFlow<ResponseGet?>(null)
+    val getResponse: StateFlow<ResponseGet?> = _getResponse
 
-    private val _getResponse = MutableLiveData<ResponseGet>()
-    val getResponse : LiveData<ResponseGet> = _getResponse
 
-
-    fun getResponse() {
+    fun requestGet() {
         viewModelScope.launch {
-
-
-            val result = repository.getResponse(uid)
-
-            if (result != null) {
-
-                Log.d("GET RESPONSE DATA",result.toString())
-
-
-            }
+            val response = repository.getResponse(uid)
+            _getResponse.value = response
         }
     }
-
 }

@@ -1,6 +1,8 @@
 package com.ashutosh.sleep.Screens
 
 import android.annotation.SuppressLint
+import android.util.Log
+import android.widget.Toast
 import androidx.compose.animation.AnimatedVisibility
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -26,11 +28,13 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.AccessAlarms
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
+import androidx.compose.material3.CircularProgressIndicator
 import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
@@ -53,7 +57,9 @@ import com.ashutosh.sleep.Components.BottomSheet
 import com.ashutosh.sleep.Components.Toolbar
 import com.ashutosh.sleep.Components.backRainBow
 import com.ashutosh.sleep.Components.whiteRainBow
+import com.ashutosh.sleep.NetworkModule.RequestPost
 import com.ashutosh.sleep.R
+import com.ashutosh.sleep.Repository.Repository
 import com.ashutosh.sleep.ViewModel.MainViewModel
 import com.ashutosh.sleep.ui.theme.SleepTheme
 import kotlinx.coroutines.delay
@@ -81,8 +87,21 @@ fun HomeScreen(
 
     val mainViewModel:MainViewModel= hiltViewModel()
 
+    val postResult by mainViewModel.postResult.collectAsState()
+
+
+    val fac = listOf("children")
+    val dis = listOf("coffee")
+
+    val tempPost = RequestPost(dis,
+        fac,
+        "De-Stress",
+        "6309a9379af54f142c65fbfe",
+        "6309a9379af54f142c65fbfe")
+
+
     LaunchedEffect(Unit) {
-        mainViewModel.getResponse()
+        mainViewModel.requestPost(tempPost)
     }
 
 
@@ -267,6 +286,28 @@ fun HomeScreen(
                         TaskStatus(time="8 hrs",status="Recommended", whiteRainBow())
                         TaskStatus(time="7 hrs",status="Goal", backRainBow())
                         TaskStatus(time="6 hrs",status="Achieved", whiteRainBow())
+                    }
+
+
+                    when (postResult) {
+                        is Repository.PostResult.Success -> {
+                            val response = (postResult as Repository.PostResult.Success).postResponse
+                            Text(text = "Response: $response")
+                            Log.d("okhttp Scucess",response.toString())
+                        }
+                        Repository.PostResult.NetworkError -> {
+                            Text(text = "Network error occurred")
+                            Log.d("okhttp Network Error","Errror")
+                        }
+                        is Repository.PostResult.Error -> {
+                            val errorMessage = (postResult as Repository.PostResult.Error).errorMessage
+                            Text(text = "Error: $errorMessage")
+                            Log.d("okhttp Error","Unknown Error")
+                        }
+                        is Repository.PostResult.Loading -> {
+                            CircularProgressIndicator()
+                            Log.d("okhttp Loading","Loading")
+                        }
                     }
 
 

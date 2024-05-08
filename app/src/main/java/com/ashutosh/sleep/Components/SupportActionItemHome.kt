@@ -37,7 +37,7 @@ fun SupportActionItemHome(
 
     Column(
         modifier = Modifier
-            .padding(4.dp)
+            .padding(9.dp)
             .fillMaxWidth()
             .wrapContentHeight()
             .clip(RoundedCornerShape(10.dp))
@@ -47,6 +47,7 @@ fun SupportActionItemHome(
     ) {
 
         Row(modifier = Modifier
+
             .fillMaxWidth()
             ,verticalAlignment = Alignment.CenterVertically) {
 
@@ -94,9 +95,9 @@ fun SupportActionItemHome(
                 Text(
                     text = supportText,
                     color = Color.White,
-                    fontSize = 18.sp,
-                    lineHeight = 18.sp,
-                    fontWeight = FontWeight.Medium,
+                    fontSize = 16.sp,
+                    lineHeight = 16.sp,
+                    fontWeight = FontWeight.SemiBold,
                 )
             }
         }

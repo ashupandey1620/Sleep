@@ -7,6 +7,8 @@ import com.ashutosh.sleep.API.SleepApi
 import com.ashutosh.sleep.NetworkModule.RequestPost
 import com.ashutosh.sleep.NetworkModule.RequestPut
 import com.ashutosh.sleep.NetworkModule.ResponseGet
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.flow
 import java.io.IOException
 import javax.inject.Inject
 
@@ -15,40 +17,29 @@ class Repository @Inject constructor(private val api : SleepApi){
 
     sealed class PostResult {
         object Loading : PostResult()
-        data class Success(val loginResponse: Any) : PostResult()
+        data class Success(val postResponse: Any) : PostResult()
         object NetworkError : PostResult()
         data class Error(val errorMessage: String) : PostResult()
     }
 
-    private val _postResponseLiveData = MutableLiveData<Any?>()
-    val postResponseLiveData : LiveData<Any?>
-        get() = _postResponseLiveData
-
-    suspend fun postCheck(uid:String, request: RequestPost): PostResult {
-        val currentTimestamp = System.currentTimeMillis()
-        return try {
-            val response = api.sleepPost(uid, currentTimestamp, request)
-
-            val responseBody = response.body()
-            if (response.isSuccessful && responseBody != null) {
-                _postResponseLiveData.postValue(responseBody)
-                PostResult.Success(responseBody)
-            } else {
-                PostResult.Error("Error: ${response.code()}")
+    suspend fun postCheck(uid:String, request: RequestPost): Flow<PostResult> {
+        return flow {
+            emit(PostResult.Loading)
+            try {
+                val response = api.sleepPost(uid , System.currentTimeMillis() , request)
+                val responseBody = response.body()
+                if (response.isSuccessful && responseBody != null) {
+                    emit(PostResult.Success(responseBody))
+                } else {
+                    emit(PostResult.Error("Error: ${response.code()}"))
+                }
+            } catch (e: IOException) {
+                emit(PostResult.NetworkError)
+            } catch (e: Exception) {
+                emit(PostResult.Error("Error occurred: ${e.message}"))
             }
-        } catch (e: IOException) {
-            // Handle network error
-            PostResult.NetworkError
-        } catch (e: Exception) {
-            // Handle other exceptions
-            PostResult.Error("Error occurred: ${e.message}")
         }
     }
-
-
-
-
-
     sealed class PutResult {
         object Loading : PutResult()
         data class Success(val response: Any) : PutResult()
@@ -56,45 +47,34 @@ class Repository @Inject constructor(private val api : SleepApi){
         data class Error(val errorMessage: String) : PutResult()
     }
 
-    private val _putResponseLiveData = MutableLiveData<Any?>()
-    val putResponseLiveData: LiveData<Any?>
-        get() = _putResponseLiveData
-
-    suspend fun putRequest(uid:String, request: RequestPut): PutResult {
-        val currentTimestamp = System.currentTimeMillis()
-        return try {
-            val response = api.sleepPut(uid, currentTimestamp, request)
-
+    suspend fun putRequest(uid:String, request: RequestPut): Flow<PutResult> = flow {
+        emit(PutResult.Loading)
+        try {
+            val response = api.sleepPut(uid, System.currentTimeMillis(), request)
             val responseBody = response.body()
             if (response.isSuccessful && responseBody != null) {
-                _putResponseLiveData.postValue(responseBody)
-                PutResult.Success(responseBody)
+                emit(PutResult.Success(responseBody))
             } else {
-                PutResult.Error("Error: ${response.code()}")
+                emit(PutResult.Error("Error: ${response.code()}"))
             }
         } catch (e: IOException) {
-            // Handle network error
-            PutResult.NetworkError
+            emit(PutResult.NetworkError)
         } catch (e: Exception) {
-            // Handle other exceptions
-            PutResult.Error("Error occurred: ${e.message}")
+            emit(PutResult.Error("Error occurred: ${e.message}"))
         }
     }
-
-
 
     suspend fun getResponse(uid: String): ResponseGet? {
         val currentTimestamp = System.currentTimeMillis()
         return try {
             val response = api.sleepGet(uid, currentTimestamp)
-
             response.body()
         } catch (e: Exception) {
-
             Log.d("ErrorHandling",e.toString())
             null
         }
     }
+
 
 
 }
